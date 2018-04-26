@@ -1,0 +1,47 @@
+python:面向对象，认为变量，类都是对象；
+python3与python2不同之处：
+print(）必须使用括号
+urlopen()引入包必须使用urllib.request包
+
+python机器视觉编程环境搭建：
+1 所需要的软件包
+   python
+   pip:python的一个包管理器，安装后可以方便的引入第三方库
+   		--安装方式，下载之后使用命令行安装，解压之后cmd进入对应的文件，然后使用python setup.py install命令进行安装
+        将E:\python\Scripts目录加入到path,可以直接在命令行启动pip
+   Numpy:有三种安装方法，http://blog.csdn.net/iracer/article/details/51537020
+   使用pip直接安装 pip install numpy
+   Scipy:Scipy是一款方便易用的科学和工程计算工具包，包括统计，优化，整合，线性代数模块，傅里叶变换，信号和图像处理，常微分方程求解器等。也可以直接用pip来进行安装
+   PIL:python图像处理类库，提供了通用的图像处理功能
+   opencv:注意：因为opencv默认是只支持python2.7的，因此需要下载扩展包并安装，对应python3.4的扩展包名为opencv_python-3.1.0-cp34-cp34m-win_amd64.whl
+2 linux下搭建opencv环境
+   在目录下新建opencv，下载opencv的zip包，在目录下直接解压，进入解压后的目录，新建build文件，执行cmake,cmake如果失败删除cmakecache.之后重新进行cmake,cmake完成之后进行make1，再进行make install
+
+python正则表达式
+python正则表达式的基本匹配省略；
+
+re模块：
+1 compile()方法：
+  书上所给的描述是：
+   使用任何可选的标记来编译正则表达式的模式，然后返回一个正则表达式对象
+   
+   一个运行成功的事例：
+~~~
+ import re
+text = "this is a test text"
+regex = re.compile(r'e[sx]t')
+print(regex.findall(text))
+~~~
+compile会返回一个正则表达式对象直接匹配，直接打印出来类似下图
+![](images/screenshot_1523687958788.png)
+再findall之后结果如下图所示：
+![](images/screenshot_1523688070410.png)
+2 match方法：
+尝试使用带有可选标记的正则表达式的模式来匹配字符串，如果匹配成功，就但会匹配对象，失败返回none;
+例如： re.match('foo','food is on the table')将返回foo；
+注意：直接在一个python文件中这样写不会得到输出结果
+3 search方法：
+使用可选标记搜索字符串第一次出现的正则表达式模式，匹配成功会返回匹配对象，失败但会None;
+ match与search的区别：match是从字符串的其实位置开始匹配的，search是在字符串中查找模式，即使匹配到的位置在字符串的中间也可以得到匹配结果；
+ 4 sub()和subn(0方法进行搜索和替换
+ 都是用来进行搜索和替换的函数，但是subn还返回一个表示替换的总数

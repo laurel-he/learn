@@ -1,0 +1,38 @@
+1 python读取文件，获取图片的大小并用其他格式存储
+~~~
+# -*- coding: utf-8 -*-
+import cv2
+#载入图像
+im = cv2.imread('e:/img/2.jpg');
+#打印图像尺寸
+h,w = im.shape[:2]
+print(h,w)
+#保存jpg格式为png格式
+cv2.imwrite('e:/img/2.png',im)
+~~~
+2 颜色空间转换
+![](images/screenshot_1521099704131.png)![颜色空间转换结果](images/cvt.png)
+代码如下：
+~~~
+# -*- coding: utf-8 -*-
+import cv2
+#载入图像
+im = cv2.imread('e:/img/2.jpg')
+print(im.shape)
+
+gray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
+print(gray.shape)
+~~~
+注意：opencv中图像不是用常规的RGB来存储的，而是BGR顺序
+
+
+
+1 用python+opencv运行如下代码会报错
+import cv2  
+im = cv2.imread("e:/img/1.jpg")  
+imGray = cv2.imread('e:/img/1.jpg',cv2.CV_LOAD_IMAGE_GRAYSCALE)  
+cv2.imshow("WinName",im)  
+cv2.imshow("Gray WinName",imGray)  
+cv2.waitKey()
+解决方法：将CV_LOAD_IMAGE_GRAYSCALE替换成IMREAD_GRAYSCALE
+2 
